@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Claude 额度</title>
+  <link rel="stylesheet" href="kvote-card.css">
+  <style>
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh; display: grid; place-items: start center; padding: 48px 16px; box-sizing: border-box;
+      background: radial-gradient(140% 60% at 50% -14%, rgba(74,116,161,.38), rgba(44,73,114,.12) 45%, transparent 70%),
+        radial-gradient(90% 45% at 85% 105%, rgba(44,73,114,.32), transparent 70%), #11141B;
+    }
+    #kv { width: 100%; max-width: 300px; }
+  </style>
+</head>
+<body>
+  <div id="kv"></div>
+  <script src="kvote-card.js"></script>
+  <script>KvoteCard.mount(document.getElementById("kv"));</script>
+</body>
+</html>
