@@ -129,7 +129,8 @@ KvoteCard()               // 放在你想放的地方，比如菜单最上面
 - **第三行不一定有。** `seven_day_overage_included` 在 Claude Code 源码里的说明是「按模型分的每周额度」，只有那一轮用到对应的模型才会带回来。我们测下来是用 Fable 回话的那一轮出现的，所以卡片上标成「每周 · Fable」。名字不对，就改 `web/kvote-card.js` 里的 `LABELS`。这一行带回来之后，没过重置时间会一直保留。
 - **字段是 Claude Code 自己的输出格式，没有官方承诺。** stream-json 里的 `unifiedWindows` 在源码里标着 internal，状态栏的 `rate_limits` 写在 Claude Code 自带的状态栏说明里。我们是在 Claude Code 2.1.280 上测的。哪天格式变了，卡片就只是不更新，不会影响别的东西。
 - 状态栏里的 `rate_limits` 只有订阅账号才有。用 API key 跑的话是空的。
-- 写数据的那几个小工具出了任何错都只会静默跳过，不会把 Claude Code 带崩。
+- A 和 B 只是把 Claude Code 已经给出的数存下来，不会多发任何请求。C 每跑一次，就是正常地让 Claude Code 用 Haiku 回一句话。
+- 写数据的那几个小工具出了任何错都只会静默跳过，不会把 Claude Code 带崩。`stream_tap.py` 按字节原样转发，遇到怪字符也不会把管道堵住。
 
 ## 协议
 

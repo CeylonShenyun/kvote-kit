@@ -34,11 +34,15 @@ def handle_line(line, path=None):
 
 
 def main():
-    out = sys.stdout
-    for line in sys.stdin:
+    # 按字节原样转发：碰到什么怪字符都不会在这儿卡住；存用量出任何错都吞掉——管道断了，你的 bridge 就收不到输出了
+    src, out = sys.stdin.buffer, sys.stdout.buffer
+    for line in src:
         out.write(line)
         out.flush()
-        handle_line(line)
+        try:
+            handle_line(line)
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
